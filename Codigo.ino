@@ -1,7 +1,7 @@
 #define WATERPIN 2
 #define READSOILPIN A0
 
-// higher number is more dry
+//número más alto es más seca 
 #define MAXDRYNESS 700
 
 #define WATERDELAY 750
@@ -16,14 +16,15 @@ void setup()
 
 void loop()
 {
-  int SensorValue = analogRead(READSOILPIN); //take a sample
+  int SensorValue = analogRead(READSOILPIN);  //tomar una muestra
   Serial.print(SensorValue); Serial.print(" - ");
   
   if(SensorValue >= MAXDRYNESS) 
   {
-   // if the soil is too dry start watering for 3/4 a second then
-   // wait for 5 seconds before monitoring again
-   Serial.println("Soil dry start watering");
+   
+//si el suelo está demasiado seco de inicio de riego por 3/4 y luego una segunda
+//esperar 5 segundos antes de monitorizar de nuevo
+   Serial.println("Riego del suelo arranque en seco");
    digitalWrite(WATERPIN, HIGH);
    delay(WATERDELAY);
    digitalWrite(WATERPIN, LOW);
